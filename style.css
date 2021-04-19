@@ -1,0 +1,7 @@
+.border {
+    border: 1px solid black;
+}
+.grid-container {
+    display: grid;
+    grid-template-rows: 93vh 5vh;
+}
