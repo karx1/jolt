@@ -29,6 +29,11 @@ type NickChange = {
     new: string;
 }
 
+type LeaveEvent = {
+    nick: string;
+    reason: string;
+}
+
 const socket = io("ws://localhost:3000");
 
 socket.on("connect", () => {
@@ -69,3 +74,9 @@ nickButton.onclick = () => {
         nickInput.value = "";
     }
 }
+
+socket.on("leave", (event: LeaveEvent) => {
+    const display = document.createElement("p");
+    display.innerHTML = `<b>${event.nick}</b> has disconnected. (reason: ${event.reason})`
+    chat.appendChild(display);
+});
