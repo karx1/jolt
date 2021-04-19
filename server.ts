@@ -11,6 +11,9 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket: Socket) => {
     socket.emit("welcome", socket.id);
+    socket.on("message", (text: string) => {
+        console.log(text);
+    })
 });
 
 console.log("ready!");

@@ -8,7 +8,8 @@
   "private": true,
   "scripts": {
     "client": "webpack --mode production",
-    "client:dev": "webpack --mode development"
+    "client:dev": "webpack --mode development",
+    "server": "tsc server.ts"
   },
   "devDependencies": {
     "ts-loader": "^9.0.0",

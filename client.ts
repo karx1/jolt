@@ -5,9 +5,7 @@ const input = document.getElementById("chat-input") as HTMLInputElement;
 
 document.addEventListener("keypress", (event: KeyboardEvent) => {
     if (event.key === "Enter") {
-        const d = document.createElement("p");
-        d.innerText = input.value;
-        chat.appendChild(d);
+        socket.emit("message", input.value);
 
         input.value = "";
     }
