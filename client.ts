@@ -20,6 +20,8 @@ socket.on("connect", () => {
     console.log(socket.id);
 });
 
-socket.on("hello", (data) => {
-    console.log(data);
+socket.on("welcome", (id: string) => {
+    const message = document.createElement("p");
+    message.innerText = `Welcome to jolt. Your ID is ${id}`;
+    chat.appendChild(message);
 })
