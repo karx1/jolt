@@ -16,12 +16,7 @@ type Message = {
 
 io.on("connection", (socket: Socket) => {
     socket.emit("welcome", socket.id);
-    socket.on("message", (text: string) => {
-        const message: Message = {
-            sender: socket.id,
-            value: text
-        }
-
+    socket.on("message", (message: Message) => {
         io.emit("message", message);
     })
 });
