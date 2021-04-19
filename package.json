@@ -6,6 +6,10 @@
   "author": "Yash Karandikar <nerdstep710@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "client": "webpack --mode production",
+    "client:dev": "webpack --mode development"
+  },
   "devDependencies": {
     "ts-loader": "^9.0.0",
     "typescript": "^4.2.4",
