@@ -21,6 +21,11 @@ type NickChange = {
     new: string;
 }
 
+type LeaveEvent = {
+    nick: string;
+    reason: string;
+}
+
 io.on("connection", (socket: Socket) => {
     nicks[socket.id] = socket.id;
     socket.emit("welcome", socket.id);
@@ -30,6 +35,16 @@ io.on("connection", (socket: Socket) => {
     socket.on("nick", (change: NickChange) => {
         nicks[socket.id] = change.new;
         io.emit("nick", change);
+    });
+    socket.on("disconnect", (reason: string) => {
+        const ev: LeaveEvent = {
+            nick: nicks[socket.id],
+            reason: reason
+        };
+
+        io.emit("leave", ev);
+        
+        delete nicks[socket.id];
     });
 });
 
