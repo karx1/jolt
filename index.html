@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>jolt</title>
-        <link rel="stylesheet" href="./style.css">
-    </head>
-    <body>
-        <div class="grid-container">
-            <div class="border" id="chat-window">
-                <!-- This area will get populated by typescript -->
-            </div>
-            <input type="text" id="chat-input" class="border">
-        </div>
 
-        <script src="dist/bundle.js"></script>
-    </body>
+<head>
+    <title>jolt</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="border" id="chat-window">
+            <!-- This area will get populated by typescript -->
+        </div>
+        <input type="text" id="chat-input" class="border">
+    </div>
+
+
+    <div class="border nick-form">
+        <div id="prompt-message">Enter Nickname
+        </div>
+        <input id="nick" type="text">
+        <br>
+        <button id="change-nick">Ok</button>
+    </div>
+
+    <script src="dist/bundle.js"></script>
+</body>
+
 </html>
