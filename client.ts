@@ -80,3 +80,9 @@ socket.on("leave", (event: LeaveEvent) => {
     display.innerHTML = `<b>${event.nick}</b> has disconnected. (reason: ${event.reason})`
     chat.appendChild(display);
 });
+
+socket.on("join", (id: string) => {
+    const display = document.createElement("p");
+    display.innerHTML = `<b>${id}</b> has joined.`;
+    chat.appendChild(display);
+})
