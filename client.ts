@@ -11,6 +11,11 @@ document.addEventListener("keypress", (event: KeyboardEvent) => {
     }
 });
 
+type Message = {
+    sender: string;
+    value: string;
+}
+
 const socket = io("ws://localhost:3000");
 
 socket.on("connect", () => {
@@ -22,4 +27,10 @@ socket.on("welcome", (id: string) => {
     const message = document.createElement("p");
     message.innerText = `Welcome to jolt. Your ID is ${id}`;
     chat.appendChild(message);
+})
+
+socket.on("message", (message: Message) => {
+    const display = document.createElement("p");
+    display.innerHTML = `<b>${message.sender}</b>: ${message.value}`;
+    chat.appendChild(display);
 })
