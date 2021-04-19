@@ -7,7 +7,7 @@ const nickInput = document.getElementById("nick") as HTMLInputElement;
 let nick: string = "";
 
 document.addEventListener("keypress", (event: KeyboardEvent) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && input.value !== "") {
         const message: Message = {
             sender: nick,
             value: input.value
@@ -57,13 +57,15 @@ socket.on("nick", (change: NickChange) => {
 
 
 nickButton.onclick = () => {
-    const change: NickChange = {
-        old: nick,
-        new: nickInput.value
-    };
+    if (nickInput.value !== "") {
+        const change: NickChange = {
+            old: nick,
+            new: nickInput.value
+        };
 
-    socket.emit("nick", change);
+        socket.emit("nick", change);
 
-    nick = nickInput.value;
-    nickInput.value = "";
+        nick = nickInput.value;
+        nickInput.value = "";
+    }
 }
