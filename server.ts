@@ -27,8 +27,12 @@ type LeaveEvent = {
 }
 
 io.on("connection", (socket: Socket) => {
-    nicks[socket.id] = socket.id;
     socket.emit("welcome", socket.id);
+
+    io.emit("join", socket.id);
+
+    nicks[socket.id] = socket.id;
+
     socket.on("message", (message: Message) => {
         io.emit("message", message);
     });
