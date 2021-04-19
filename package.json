@@ -1,0 +1,9 @@
+{
+  "name": "jolt",
+  "version": "1.0.0",
+  "description": "An experiment in building a chat app",
+  "repository": "git@github.com:karx1/jolt.git",
+  "author": "Yash Karandikar <nerdstep710@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
