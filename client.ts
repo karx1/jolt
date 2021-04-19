@@ -65,4 +65,5 @@ nickButton.onclick = () => {
     socket.emit("nick", change);
 
     nick = nickInput.value;
+    nickInput.value = "";
 }
