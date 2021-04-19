@@ -9,6 +9,8 @@ const io = new Server(httpServer, {
     }
 });
 
+const nicks: Record<string, string> = {};
+
 type Message = {
     sender: string;
     value: string;
@@ -20,13 +22,15 @@ type NickChange = {
 }
 
 io.on("connection", (socket: Socket) => {
+    nicks[socket.id] = socket.id;
     socket.emit("welcome", socket.id);
     socket.on("message", (message: Message) => {
         io.emit("message", message);
     });
     socket.on("nick", (change: NickChange) => {
+        nicks[socket.id] = change.new;
         io.emit("nick", change);
-    })
+    });
 });
 
 console.log("ready!");
