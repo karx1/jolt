@@ -34,7 +34,10 @@ type LeaveEvent = {
     reason: string;
 }
 
-const socket = io("ws://localhost:3000");
+const ip = prompt("Please enter the server IP");
+const port = prompt("Please enter the server port (default: 3000)", "3000");
+
+const socket = io(`ws://${ip}:${port}`);
 
 socket.on("connect", () => {
     console.log("Connected to server!");
